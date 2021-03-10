@@ -58,7 +58,24 @@ header p {
     margin: 0;
 }
 
+.collage{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
+.collage .img {
+  flex-basis: 50%;
+  padding: 2.5px;
+}
+
+.collage .img:nth-child(odd) {
+  padding-left: 0;
+}
+
+.collage .img:nth-child(even) {
+  padding-right: 0;
+}
 /** Caption styles */
 
 .caption,
@@ -71,7 +88,92 @@ figcaption {
 
 /** BASE CLASSES */
 
+.annotate{
+  position: relative;
+}
 
+
+.annotate .dot{
+position: absolute;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+overflow: hidden;
+border: 2px solid #FFF;
+color: #FFF;
+}
+
+.annotate .dot .inner{
+  position: absolute;
+  opacity: 0;
+  padding: 25px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.annotate .dot .close{
+position: absolute;
+color: #FFF;
+top: 10px;
+right:10px;
+font-size:2em;
+text-decoration: none;
+opacity: 0;
+}
+.annotate .dot.green {
+    background-color: rgba(0, 110, 65, 0.65);
+}
+.annotate .dot.purple {
+    background-color: rgba(74, 2, 242, 0.65);
+}
+.annotate .dot.red {
+    background-color: rgba(230, 11, 65, 0.65);
+}
+.annotate .dot.blue {
+    background-color: rgba(11, 18, 230, 0.65);
+}
+.annotate .dot.pink {
+    background-color: rgba(240, 12, 182, 0.65);
+}
+
+.annotate .dot.active{
+  width:100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0;
+  border: 0;
+  z-index: 2;
+}
+
+.annotate .dot.active .inner,
+.annotate .dot.active .close{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#battery:not(.active) {
+  top: 45%;
+  left: 14%;
+}
+#wheels:not(.active)  {
+  bottom: 27%;
+  left: 31%;
+}
+
+#moxie:not(.active) {
+  bottom: 39%;
+    left: 27%;
+}
+#instrumentation:not(.active)  {
+  bottom: 42%;
+    right: 33%;
+}
+
+#SuperCam:not(.active)  {
+  bottom: 70%;
+right: 64%;
+}
 /** Container styles to keep content from becoming too wide or coming too close to
 * mobile edge */
 
@@ -101,6 +203,20 @@ figcaption {
 *********************************************************************/
 
 @media(min-width: 681px) {
+  #SuperCam:not(.active)  {
+    bottom: 75%;
+    right: 66%;
+  }
+
+  #moxie:not(.active) {
+    bottom: 42%;
+    left: 26%;
+  }
+
+  #instrumentation:not(.active) {
+    bottom: 43%;
+    right: 26%;
+  }
     /* Any adjustments for tablets and larger go here.
     Note these styles will be applied to anything 681px or larger -- so tablet AND desktop */
 }
